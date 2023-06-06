@@ -1,21 +1,10 @@
-
-@font-face{
+@font-face {
   font-family: montserrat;
   src: url('./assets/Montserrat-VariableFont_wght.ttf');
 }
+
 .image {
-
-  /* position: absolute;
-    width: 310px;
-    height: 67px;
-    left: 45rem;
-    padding-top: 1rem;
-    border-radius: 6px; */
   display: flex;
-  /* margin: auto; */
-  /* padding-top: 2rem; */
-
-
 }
 
 .header {
@@ -26,7 +15,6 @@
 }
 
 .menu {
-  /* padding-top:1rem; */
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: 10rem;
@@ -57,11 +45,9 @@
 
 .email-input {
 
-  /* margin-top: 3rem; */
   opacity: 1;
   height: 2.8rem;
   width: 25rem;
-  /* border-color: #008000; */
   border-width: 0.1rem;
   background-color: black;
   padding-left: 3rem;
@@ -75,14 +61,12 @@
   color: #FFA500;
   letter-spacing: 0.2rem;
   font-family: montserrat
-
-
 }
 
 
-.email-input:focus{
-    outline: none;
-    color: white;
+.email-input:focus {
+  outline: none;
+  color: white;
 }
 
 .email-input:hover {
@@ -91,13 +75,6 @@
 }
 
 .input-wrapper {
-  /* width: 11rem;
-  height: 2rem;
-  border: red;
-  border-color: red;
-  border-width: 2rem;
-  /* padding-top: 5rem; */
-  /* background-color: white; */
   height: 3rem;
   width: 23rem;
   background-color: black;
@@ -108,13 +85,14 @@
   padding-left: 2rem;
 }
 
-.forgot-password{
+.forgot-password {
   margin-left: 12rem;
   margin-top: 1.5rem;
   font-size: 1rem;
   font-family: montserrat;
 }
-.login-button{
+
+.login-button {
   background: #FFFFFF;
   width: 25rem;
   height: 3rem;

@@ -5,14 +5,13 @@ import logo from '../assets/logo.png';
 
 const Header = () => {
     return (
-  <div className='header'>
-                <RiMenu2Line size={43} color='white' />
+        
+        <div className='header'>
+            <RiMenu2Line size={43} color='white' />
             <img src={logo} alt="logo" className='' />
             <RiMenu2Line size={43} color='black' />
+        </div>
 
-          
-            </div>
-        
     )
 }
 

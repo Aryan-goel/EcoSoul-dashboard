@@ -4,10 +4,9 @@ import Login from './components/Login';
 
 function App() {
   return (
-    //!create diff files for components
     <>
-   <Header/>
-   <Login/>
+      <Header />
+      <Login />
     </>
   );
 }
