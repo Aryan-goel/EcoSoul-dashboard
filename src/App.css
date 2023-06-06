@@ -1,38 +1,127 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face{
+  font-family: montserrat;
+  src: url('./assets/Montserrat-VariableFont_wght.ttf');
 }
+.image {
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* position: absolute;
+    width: 310px;
+    height: 67px;
+    left: 45rem;
+    padding-top: 1rem;
+    border-radius: 6px; */
   display: flex;
-  flex-direction: column;
+  /* margin: auto; */
+  /* padding-top: 2rem; */
+
+
+}
+
+.header {
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+.menu {
+  /* padding-top:1rem; */
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 10rem;
+}
+
+.menu:hover {
+  cursor: pointer;
+}
+
+.main {
+  position: absolute;
+  width: 459px;
+  height: 543px;
+  left: 527px;
+  top: 219px;
+
+}
+
+.login {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  margin-top: 10rem;
   color: white;
+  flex-direction: column;
+
 }
 
-.App-link {
-  color: #61dafb;
+.email-input {
+
+  /* margin-top: 3rem; */
+  opacity: 1;
+  height: 2.8rem;
+  width: 25rem;
+  /* border-color: #008000; */
+  border-width: 0.1rem;
+  background-color: black;
+  padding-left: 3rem;
+  padding-bottom: 0.1rem;
+  border: none;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.email-input::placeholder {
+  font-size: medium;
+  color: #FFA500;
+  letter-spacing: 0.2rem;
+  font-family: montserrat
+
+
+}
+
+
+.email-input:focus{
+    outline: none;
+    color: white;
+}
+
+.email-input:hover {
+  border-color: #FFA500;
+  transition: ease-in 0.3s;
+}
+
+.input-wrapper {
+  /* width: 11rem;
+  height: 2rem;
+  border: red;
+  border-color: red;
+  border-width: 2rem;
+  /* padding-top: 5rem; */
+  /* background-color: white; */
+  height: 3rem;
+  width: 23rem;
+  background-color: black;
+  display: flex;
+  border: 1px solid #008000;
+  padding: 0.2rem;
+  margin-top: 2rem;
+  padding-left: 2rem;
+}
+
+.forgot-password{
+  margin-left: 12rem;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-family: montserrat;
+}
+.login-button{
+  background: #FFFFFF;
+  width: 25rem;
+  height: 3rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  font-family: montserrat;
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
 }
