@@ -2,6 +2,12 @@
   font-family: montserrat;
   src: url('./assets/Montserrat-VariableFont_wght.ttf');
 }
+:root {
+  --first-color: black;
+  --second-color: #FFA500;
+  --third-color: #008000;
+  --fourth-color: #FFFFFF;
+}
 
 .image {
   display: flex;
@@ -33,7 +39,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 10rem;
-  color: white;
+  color: var(--fourth-color);
   flex-direction: column;
 
 }
@@ -44,16 +50,17 @@
   height: 2.8rem;
   width: 25rem;
   border-width: 0.1rem;
-  background-color: black;
+  background-color: var(--first-color);
   padding-left: 3rem;
   padding-bottom: 0.1rem;
   border: none;
+  font-size: 1.2rem;
 
 }
 
 .email-input::placeholder {
   font-size: medium;
-  color: #FFA500;
+  color: var(--second-color);
   letter-spacing: 0.2rem;
   font-family: montserrat
 }
@@ -61,20 +68,20 @@
 
 .email-input:focus {
   outline: none;
-  color: white;
+  color: var(--fourth-color);
 }
 
 .email-input:hover {
-  border-color: #FFA500;
+  border-color: var(--second-color);
   transition: ease-in 0.3s;
 }
 
 .input-wrapper {
   height: 3rem;
   width: 23rem;
-  background-color: black;
+  background-color: var(--first-color);
   display: flex;
-  border: 1px solid #008000;
+  border: 1px solid var(--second-color);
   padding: 0.2rem;
   margin-top: 2rem;
   padding-left: 2rem;
@@ -85,6 +92,7 @@
   margin-top: 1.5rem;
   font-size: 1rem;
   font-family: montserrat;
+  cursor: pointer;
 }
 
 .login-button {
@@ -97,10 +105,11 @@
   font-size: 1.3rem;
   margin-top: 1.5rem;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .sidebar {
-  background-color: #FFA500;
+  background-color: var(--second-color);
   width: 20rem;
   height: 100vh;
   transition: ease-in 0.5s;
@@ -127,9 +136,10 @@
   align-items: center;
   padding-top: 10rem;
   margin-left: 3rem;
-  font-family: motserrat;
+  font-family: montserrat;
   font-size: 2rem;
-  color: #008000;
+  color:var(--first-color);
+  font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -140,8 +150,9 @@
   align-items: center;
   font-size: 2rem;
   padding-top: 2rem;
-  font-family: motserrat;
-  color: #008000;
+  font-family: montserrat;
+  color:var(--first-color);
+  font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
 }

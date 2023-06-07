@@ -15,7 +15,7 @@ const Login = () => {
             </div>
             <div className='input-wrapper'>
                 <MdPassword size={40} color='#FFA500' />
-                <input placeholder='PASSWORD' className='email-input' type="email" name="email" id="" />
+                <input placeholder='PASSWORD' className='email-input' type="password" name="email" id="" />
             </div>
             <div className='forgot-password'>
                 Forgot Password?
