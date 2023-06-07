@@ -7,17 +7,12 @@
   display: flex;
 }
 
-.header {
-  display: flex;
+.Header {
+ 
+  position: flex;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
-}
+  justify-content: space-around;
 
-.menu {
-  justify-content: flex-start;
-  align-items: flex-start;
-  margin-bottom: 10rem;
 }
 
 .menu:hover {
@@ -102,4 +97,57 @@
   font-size: 1.3rem;
   margin-top: 1.5rem;
   font-weight: 600;
+}
+
+.sidebar {
+  background-color: #FFA500;
+  width: 20rem;
+  height: 100vh;
+  transition: ease-in 0.5s;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  
+}
+
+.sidebar-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  transition: ease-in 0.8s;
+}
+
+.sidebar-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10rem;
+  margin-left: 3rem;
+  font-family: motserrat;
+  font-size: 2rem;
+  color: #008000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sidebar-title1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  padding-top: 2rem;
+  font-family: motserrat;
+  color: #008000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.close-sidebar {
+  float: right;
+  transition: ease-in 0.8s;
+
 }

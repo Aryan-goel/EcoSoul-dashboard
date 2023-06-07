@@ -2,15 +2,12 @@ import React from 'react'
 import { RiShoppingCartFill } from 'react-icons/ri';
 import { MdPassword } from 'react-icons/md'
 import { AiOutlineUser } from 'react-icons/ai'
+
 const Login = () => {
 
-    function icon() {
-        return <RiShoppingCartFill />
-    }
     return (
-
-
-        <div className='login'>
+          <div className='login'>
+         
             <RiShoppingCartFill size={150} color='#FFA500' />
             <div className='input-wrapper'>
                 <AiOutlineUser size={40} color='#FFA500' />
