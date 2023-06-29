@@ -9,7 +9,7 @@ const Sidebar = () => {
           
       <div className='sidebar-title' onClick={event => window.location.href = '/home'}
 >Home</div>
-          <div className='sidebar-title1'>WareHouse</div>
+      <div className='sidebar-title1' onClick={event => window.location.href = '/warehouse'}>WareHouse</div>
           <div className='sidebar-title1'>Retail</div>
     </div>
   )

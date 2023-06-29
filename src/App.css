@@ -314,3 +314,57 @@ body {
   width: 60rem;
 
 }
+
+.graph{
+
+/* display: flex;
+align-items: flex-start;
+justify-content: flex-start; */
+padding-top: 2rem;
+padding-left: 5rem;
+/* margin-left: 24rem; */
+/* float: left; */
+/* border-radius: 2rem; */
+
+
+}
+
+.right-panel{
+ float: right;
+  width: 55rem;
+  background-color:var(--third-color);
+  height: 28rem;
+  /* overflow: hidden; */
+  /* position: fixed; */
+}
+
+.left-panel{
+  float: left;
+  width: 55rem;
+  height: 30rem;
+  background-color: var(--second-color);
+  /* overflow: hidden; */
+  /* position: fixed; */
+  /* margin-top: 24rem; */
+}
+
+.pie-chart{
+  /* display: flex;
+  flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end; */
+    display: flex;
+    justify-content: space-between;
+    /* border-radius: 1rem; */
+    margin-left: 6rem;
+    padding-top: 4rem;
+}
+
+.pie{
+  float:right;
+  margin-right: 4rem;
+  /* padding-bottom: 2rem; */
+    /* position: fixed; */
+    /* overflow: hidden; */
+    border-radius: 2rem;
+}
