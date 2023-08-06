@@ -2,15 +2,10 @@ import React from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Header';
 import axios from 'axios';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import { useEffect, useState } from 'react';
-import { Card } from '@mui/material';
 
+
+// import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 
 
@@ -84,15 +79,15 @@ const OrderStatus = () => {
 
 
 
-    // useEffect(() => {
-    //     axios.get('/api/entries/')
-    //         .then(response => {
-    //             setEntries(response.data);
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         });
-    // }, []);
+    useEffect(() => {
+        axios.get('/api/entries/')
+            .then(response => {
+                setEntries(response.data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
 
     // console.log(entry[0].bucketname ==='documents'? true:false ,"heluu");
     return (
