@@ -54,10 +54,63 @@ const OrderStatus = () => {
                 service: "amazon",
                 report_name: "removal_orders",
                 last_updated: "Never"
+            },
+            {
+                bucketname: "document",
+                purpose: "inventory",
+                geography: "Singapore",
+                service: "amazon",
+                report_name: "removal_orders",
+                last_updated: "Never"
+            }, {
+                bucketname: "document",
+                purpose: "inventory",
+                geography: "Singapore",
+                service: "amazon",
+                report_name: "removal_orders",
+                last_updated: "Never"
+            },
+            {
+                bucketname: "document",
+                purpose: "inventory",
+                geography: "Singapore",
+                service: "amazon",
+                report_name: "removal_orders",
+                last_updated: "Never"
+            },
+            {
+                bucketname: "document",
+                purpose: "inventory",
+                geography: "Singapore",
+                service: "amazon",
+                report_name: "removal_orders",
+                last_updated: "Never"
+            },
+            {
+                bucketname: "document",
+                purpose: "inventory",
+                geography: "Singapore",
+                service: "amazon",
+                report_name: "removal_orders",
+                last_updated: "Never"
             }
         ]
     const [entries, setEntries] = useState(entry);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
+    const [isPaginate, setIsPaginate] = useState(false);
+    const itemsPerPage = 5;
+    const [currentPage, setCurrentPage] = useState(1);
+    const totalItems = entry.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentData = isPaginate ? entry.slice(indexOfFirstItem, indexOfLastItem) : entries;
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+        setIsPaginate(true)
+    };
     const requestSort = (key) => {
         // console.log(key,key);
         let direction = 'ascending';
@@ -66,8 +119,7 @@ const OrderStatus = () => {
         }
 
         const sortedData = [...entries].sort((a, b) => {
-            // console.log(a[key]<b[key]);
-            // console.log(a[key],b[key]);
+
             if (a[key] < b[key]) return direction === 'ascending' ? -1 : 1;
             if (a[key] > b[key]) return direction === 'ascending' ? 1 : -1;
             return 0;
@@ -97,8 +149,8 @@ const OrderStatus = () => {
             <button className='sort-button'>filter</button>
             <div style={{ padding: '2rem' }} ></div>
             <div className='shadow'>
-            <table style={{ width: '100%', height: '400px', background: '#FFA500' }}>
-                <thead>
+                <table style={{ width: '100%', height: '400px', background: '#FFA500' }}>
+                    <thead>
                         <tr>
                             <th onClick={() => requestSort('report_name')}>Report Name</th>
                             <th onClick={() => requestSort('geography')}>Geography</th>
@@ -109,7 +161,7 @@ const OrderStatus = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {entries.map((entry) => (
+                        {currentData.slice(0, 5).map((entry) => (
                             <tr key={entry.report_name}>
                                 <td>{entry.report_name}</td>
                                 <td>{entry.geography}</td>
@@ -118,9 +170,18 @@ const OrderStatus = () => {
                                 <td>{entry.purpose}</td>
                                 <td>{entry.service}</td>
                             </tr>
-                    ))}
-                </tbody>
-            </table>
+                        ))}
+                    </tbody>
+                </table>
+                <div>
+                    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                        Previous
+                    </button>
+                    <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                        Next
+                    </button>
+                </div>
+
             </div>
 
 
