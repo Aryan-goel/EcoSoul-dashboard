@@ -1,18 +1,10 @@
 import React from 'react'
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './Header';
 import axios from 'axios';
-
-
-// import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 
-
 const OrderStatus = () => {
-
-
-
     const entry =
         [
             {
@@ -95,38 +87,40 @@ const OrderStatus = () => {
                 last_updated: "Never"
             }
         ]
-    const [entries, setEntries] = useState(entry);
-    const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
-    const [isPaginate, setIsPaginate] = useState(false);
     const itemsPerPage = 5;
+    const [entries, setEntries] = useState(...entry);
+    console.log('a',...entry);
+    console.log(entry);
+    const [sortConfig, setSortConfig] = useState(/* { key: null, direction: null } */ null);
+    const [isPaginate, setIsPaginate] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const totalItems = entry.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentData = isPaginate ? entry.slice(indexOfFirstItem, indexOfLastItem) : entries;
+    // const currentData = isPaginate ? entry.slice(indexOfFirstItem, indexOfLastItem) : entries;
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
         setIsPaginate(true)
     };
     const requestSort = (key) => {
-        // console.log(key,key);
         let direction = 'ascending';
         if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
             direction = 'descending';
         }
 
+        setSortConfig({ key, direction });
         const sortedData = [...entries].sort((a, b) => {
 
             if (a[key] < b[key]) return direction === 'ascending' ? -1 : 1;
             if (a[key] > b[key]) return direction === 'ascending' ? 1 : -1;
             return 0;
         });
-        // console.log(sortedData,'sortedData');
         setEntries(sortedData);
-        setSortConfig({ key, direction });
+        setCurrentPage(1); // Reset to the first page after sorting
+
     };
 
 
@@ -141,7 +135,6 @@ const OrderStatus = () => {
             });
     }, []);
 
-    // console.log(entry[0].bucketname ==='documents'? true:false ,"heluu");
     return (
         <>
             <Header />
@@ -161,7 +154,7 @@ const OrderStatus = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {currentData.slice(0, 5).map((entry) => (
+                        {entries.slice(indexOfFirstItem, indexOfLastItem).map((entry) => (
                             <tr key={entry.report_name}>
                                 <td>{entry.report_name}</td>
                                 <td>{entry.geography}</td>
@@ -183,45 +176,6 @@ const OrderStatus = () => {
                 </div>
 
             </div>
-
-
-
-            {/* <div className='shadow'>
-            <TableContainer  component={Card} sx={{
-                background: '#FFA500', margin: 'auto',
-            }}>
-                <Table hoverRow sx={{  }} aria-label="simple table">
-                    <TableHead >
-                        <TableRow hover>
-                              
-                                <TableCell onClick={requestSort('')} align="left" style={{ fontSize: '1rem', fontWeight: 800, fontFamily: 'montserrat' }}>Report Name</TableCell>
-                                <TableCell onClick={requestSort('geography')} align="left" style={{ fontSize: '1rem', fontWeight: 800, fontFamily: 'montserrat' }}>Geography</TableCell>
-                                <TableCell align="left" style={{ fontSize: '1rem', fontWeight: 800, fontFamily: 'montserrat' }}>Last Updated</TableCell>
-                                <TableCell align="left" style={{ fontSize: '1rem', fontWeight: 800, fontFamily: 'montserrat' }}>Bucket Name</TableCell>
-                                <TableCell align="left" style={{ fontSize: '1rem', fontWeight: 800, fontFamily: 'montserrat' }}>Purpose</TableCell>
-                                <TableCell align="left" style={{ fontSize: '1rem', fontWeight: 800, fontFamily: 'montserrat' }}>Service</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {entries.map((entry) => (
-                            <TableRow
-                                key={entry.report_name}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            > */}
-            {/* <TableCell component="th" scope="row">
-                                    {entry.report_name}
-                                </TableCell> */}
-            {/* <TableCell align="left">{entry.geography}</TableCell>
-                                    <TableCell align="left">{entry.last_updated}</TableCell>
-                                    <TableCell align="left">{entry.bucketname}</TableCell>
-                                    <TableCell align="left">{entry.purpose}</TableCell>
-                                    <TableCell align="left">{entry.service}</TableCell> */}
-            {/* </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer> */}
-            {/* </div> */}
         </>
 
     )
