@@ -20,7 +20,7 @@ const OrderStatus = () => {
                 purpose: "inventory",
                 geography: "India",
                 service: "amazon",
-                report_name: "fbm_inventory",
+                report_name: "fbm inventory",
                 last_updated: "Never"
             },
             {
@@ -36,7 +36,7 @@ const OrderStatus = () => {
                 purpose: "inventory",
                 geography: "London",
                 service: "amazon",
-                report_name: "manage_fba",
+                report_name: "manage fba",
                 last_updated: "Never"
             },
             {
@@ -44,7 +44,7 @@ const OrderStatus = () => {
                 purpose: "inventory",
                 geography: "Singapore",
                 service: "amazon",
-                report_name: "removal_orders",
+                report_name: "removal orders",
                 last_updated: "Never"
             },
             {
@@ -52,14 +52,14 @@ const OrderStatus = () => {
                 purpose: "inventory",
                 geography: "Singapore",
                 service: "amazon",
-                report_name: "removal_orders",
+                report_name: "transfer order",
                 last_updated: "Never"
             }, {
                 bucketname: "document",
                 purpose: "inventory",
                 geography: "Singapore",
                 service: "amazon",
-                report_name: "removal_orders",
+                report_name: "purchasing orders",
                 last_updated: "Never"
             },
             {
@@ -67,7 +67,7 @@ const OrderStatus = () => {
                 purpose: "inventory",
                 geography: "Singapore",
                 service: "amazon",
-                report_name: "removal_orders",
+                report_name: "receving orders",
                 last_updated: "Never"
             },
             {
@@ -75,7 +75,7 @@ const OrderStatus = () => {
                 purpose: "inventory",
                 geography: "Singapore",
                 service: "amazon",
-                report_name: "removal_orders",
+                report_name: "bulk orders",
                 last_updated: "Never"
             },
             {
@@ -83,28 +83,72 @@ const OrderStatus = () => {
                 purpose: "inventory",
                 geography: "Singapore",
                 service: "amazon",
-                report_name: "removal_orders",
+                report_name: "inventory orders",
                 last_updated: "Never"
             }
         ]
-    const itemsPerPage = 5;
-    const [entries, setEntries] = useState(...entry);
-    console.log('a',...entry);
-    console.log(entry);
-    const [sortConfig, setSortConfig] = useState(/* { key: null, direction: null } */ null);
-    const [isPaginate, setIsPaginate] = useState(false);
+    const [entries, setEntries] = useState(entry);
+    const itemsPerPage = 5; // Number of items to display per page
     const [currentPage, setCurrentPage] = useState(1);
-    const totalItems = entry.length;
+
+    useEffect(() => {
+        // axios.get('/api/entries/')
+        //     .then(response => {
+        //         setEntries(response.data);
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     });
+        setEntries(entry)
+    }, []);
+
+    const totalItems = entries.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    // const currentData = isPaginate ? entry.slice(indexOfFirstItem, indexOfLastItem) : entries;
+    const currentData = entries.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (page) => {
+        if (page < 1 || page > totalPages) {
+            return; // Don't change the page if out of bounds
+        }
+
         setCurrentPage(page);
-        setIsPaginate(true)
     };
+
+    const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
+   
+    // const itemsPerPage = 5;
+    // const [currentPage, setCurrentPage] = useState(1);
+    // const [isPaginate, setIsPaginate] = useState(false);
+    // const totalItems = entry.length;
+    // const totalPages = Math.ceil(totalItems / itemsPerPage);
+ 
+
+    // // const indexOfLastItem = currentPage * itemsPerPage;
+    // // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    // // const startIndex = (currentPage - 1) * itemsPerPage;
+
+    // const indexOfLastItem = currentPage * itemsPerPage;
+    // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    // // const endIndex = startIndex + itemsPerPage;
+    // const currentData = isPaginate ? entry.slice(indexOfLastItem, indexOfFirstItem) : entries;
+
+    // // const handlePageChange = (page) => {
+    // //     setCurrentPage(page);
+    // //     setIsPaginate(true)
+    // //     console.log('data',entries);
+    
+    // // };
+    // const handlePageChange = (page) => {
+    //     if (page < 1 || page > totalPages) {
+    //         return; // Don't change the page if out of bounds
+    //     }
+
+    //     setCurrentPage(page);
+    //     setIsPaginate(true);
+    // };
     const requestSort = (key) => {
         let direction = 'ascending';
         if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
@@ -120,20 +164,12 @@ const OrderStatus = () => {
         });
         setEntries(sortedData);
         setCurrentPage(1); // Reset to the first page after sorting
-
     };
+   
 
+   
 
-
-    useEffect(() => {
-        axios.get('/api/entries/')
-            .then(response => {
-                setEntries(response.data);
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }, []);
+    
 
     return (
         <>
@@ -154,7 +190,17 @@ const OrderStatus = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {entries.slice(indexOfFirstItem, indexOfLastItem).map((entry) => (
+                        {/* {entries.slice(indexOfFirstItem, indexOfLastItem).map((entry) => (
+                            <tr key={entry.report_name}>
+                                <td>{entry.report_name}</td>
+                                <td>{entry.geography}</td>
+                                <td>{entry.last_updated}</td>
+                                <td>{entry.bucketname}</td>
+                                <td>{entry.purpose}</td>
+                                <td>{entry.service}</td>
+                            </tr>
+                        ))} */}
+                        {currentData.map((entry) => (
                             <tr key={entry.report_name}>
                                 <td>{entry.report_name}</td>
                                 <td>{entry.geography}</td>
@@ -166,6 +212,7 @@ const OrderStatus = () => {
                         ))}
                     </tbody>
                 </table>
+                
                 <div>
                     <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
                         Previous
@@ -173,6 +220,8 @@ const OrderStatus = () => {
                     <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
                         Next
                     </button>
+                   
+                   
                 </div>
 
             </div>
