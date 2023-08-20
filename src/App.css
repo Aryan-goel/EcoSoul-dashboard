@@ -547,3 +547,46 @@ padding-left: 5rem;
     /* overflow: hidden; */
     border-radius: 2rem;
 }
+
+.button-paginate{
+  padding: 8px 16px;
+    background-color: var(--third-color);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+    transition: background-color 0.3s ease;
+    
+}
+
+.paginate-div{
+  padding-left: 3rem;
+  padding-top: 1rem;
+}
+
+.table-headers>th{
+/* display: block; */
+/* flex-direction: column; */
+/* align-items: center;
+justify-content: center; */
+text-align: center;
+border-bottom: 1px solid black;
+font-size: 1.3rem;
+}
+
+.table-entry>td{
+text-align: center;
+  font-size: 1rem;
+border-bottom: 1px solid black;
+border-right: 1px solid black;
+}
+
+.search-bar{
+  float: right;
+  margin-right:4rem;
+  padding-left: 1rem;
+  width: 12rem;
+  height: 2rem;
+  border-radius: 2rem;
+}

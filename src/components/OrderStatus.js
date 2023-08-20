@@ -90,6 +90,13 @@ const OrderStatus = () => {
     const [entries, setEntries] = useState(entry);
     const itemsPerPage = 5; // Number of items to display per page
     const [currentPage, setCurrentPage] = useState(1);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleSearchChange = (event) => {
+        const query = event.target.value;
+        setSearchQuery(query);
+        setCurrentPage(1); // Reset to the first page when searching
+    };
 
     useEffect(() => {
         // axios.get('/api/entries/')
@@ -99,8 +106,21 @@ const OrderStatus = () => {
         //     .catch(error => {
         //         console.error(error);
         //     });
-        setEntries(entry)
-    }, []);
+        const filteredEntries = entry.filter(entry => {
+            const searchTerms = searchQuery.toLowerCase().split(' ');
+            return searchTerms.every(term =>
+                entry.report_name.toLowerCase().includes(term) ||
+                entry.geography.toLowerCase().includes(term) ||
+                entry.last_updated.toLowerCase().includes(term) ||
+                entry.bucketname.toLowerCase().includes(term) ||
+                entry.purpose.toLowerCase().includes(term) ||
+                entry.service.toLowerCase().includes(term)
+            );
+        });
+        // setEntries(entry)
+        setEntries(filteredEntries);
+
+    }, [searchQuery]);
 
     const totalItems = entries.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -119,36 +139,6 @@ const OrderStatus = () => {
 
     const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
    
-    // const itemsPerPage = 5;
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const [isPaginate, setIsPaginate] = useState(false);
-    // const totalItems = entry.length;
-    // const totalPages = Math.ceil(totalItems / itemsPerPage);
- 
-
-    // // const indexOfLastItem = currentPage * itemsPerPage;
-    // // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    // // const startIndex = (currentPage - 1) * itemsPerPage;
-
-    // const indexOfLastItem = currentPage * itemsPerPage;
-    // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    // // const endIndex = startIndex + itemsPerPage;
-    // const currentData = isPaginate ? entry.slice(indexOfLastItem, indexOfFirstItem) : entries;
-
-    // // const handlePageChange = (page) => {
-    // //     setCurrentPage(page);
-    // //     setIsPaginate(true)
-    // //     console.log('data',entries);
-    
-    // // };
-    // const handlePageChange = (page) => {
-    //     if (page < 1 || page > totalPages) {
-    //         return; // Don't change the page if out of bounds
-    //     }
-
-    //     setCurrentPage(page);
-    //     setIsPaginate(true);
-    // };
     const requestSort = (key) => {
         let direction = 'ascending';
         if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
@@ -167,20 +157,24 @@ const OrderStatus = () => {
     };
    
 
-   
-
-    
-
     return (
         <>
             <Header />
-            <button className='sort-button'>sort</button>
-            <button className='sort-button'>filter</button>
+            {/* <div className="search-bar"> */}
+                <input
+                className='search-bar'
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                />
+            {/* </div> */}
             <div style={{ padding: '2rem' }} ></div>
             <div className='shadow'>
-                <table style={{ width: '100%', height: '400px', background: '#FFA500' }}>
+                <table style={{ width: '100%', height: '400px', background: '#FFA500', paddingTop: '1rem', paddingBottom: '1rem' }}>
+                
                     <thead>
-                        <tr>
+                        <tr className='table-headers'>
                             <th onClick={() => requestSort('report_name')}>Report Name</th>
                             <th onClick={() => requestSort('geography')}>Geography</th>
                             <th onClick={() => requestSort('last_updated')}>Last Updated</th>
@@ -189,19 +183,10 @@ const OrderStatus = () => {
                             <th onClick={() => requestSort('service')}>Service</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        {/* {entries.slice(indexOfFirstItem, indexOfLastItem).map((entry) => (
-                            <tr key={entry.report_name}>
-                                <td>{entry.report_name}</td>
-                                <td>{entry.geography}</td>
-                                <td>{entry.last_updated}</td>
-                                <td>{entry.bucketname}</td>
-                                <td>{entry.purpose}</td>
-                                <td>{entry.service}</td>
-                            </tr>
-                        ))} */}
                         {currentData.map((entry) => (
-                            <tr key={entry.report_name}>
+                            <tr className='table-entry' key={entry.report_name}>
                                 <td>{entry.report_name}</td>
                                 <td>{entry.geography}</td>
                                 <td>{entry.last_updated}</td>
@@ -213,17 +198,15 @@ const OrderStatus = () => {
                     </tbody>
                 </table>
                 
-                <div>
-                    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                        Previous
-                    </button>
-                    <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                        Next
-                    </button>
-                   
-                   
-                </div>
-
+                
+            </div>
+            <div className='paginate-div'>
+                <button className='button-paginate' onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                    Previous
+                </button>
+                <button className='button-paginate' onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                    Next
+                </button>
             </div>
         </>
 
