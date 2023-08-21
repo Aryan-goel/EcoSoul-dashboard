@@ -29,7 +29,7 @@ const OrderStatus = () => {
                 geography: "Africa",
                 service: "amazon",
                 report_name: "ledger",
-                last_updated: "c"
+                last_updated: "Never"
             },
             {
                 bucketname: "document",
@@ -171,7 +171,7 @@ const OrderStatus = () => {
             {/* </div> */}
             <div style={{ padding: '2rem' }} ></div>
             <div className='shadow'>
-                <table style={{ width: '100%', height: '400px', background: '#FFA500', paddingTop: '1rem', paddingBottom: '1rem' }}>
+                <table style={{ width: '100%', height: '400px', background: '#FFA500', paddingTop: '1rem', paddingBottom: '1rem',borderRadius:'1rem' }}>
                 
                     <thead>
                         <tr className='table-headers'>
