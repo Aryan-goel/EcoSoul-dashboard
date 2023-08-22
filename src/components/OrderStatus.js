@@ -91,6 +91,21 @@ const OrderStatus = () => {
     const itemsPerPage = 5; // Number of items to display per page
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState('');
+    const [selectedFilter, setSelectedFilter] = useState(''); // State to track selected filter
+
+    const filterOptions = [
+        { label: 'All', value: '' },
+        { label: 'USA', value: 'USA' },
+        { label: 'India', value: 'India' },
+        { label: 'Africa', value: 'Africa' },
+        // Add more options here...
+    ];
+
+    const handleFilterChange = (event) => {
+        const filterValue = event.target.value;
+        setSelectedFilter(filterValue);
+        console.log('selectedfilter',selectedFilter)
+    };
 
     const handleSearchChange = (event) => {
         const query = event.target.value;
@@ -117,10 +132,16 @@ const OrderStatus = () => {
                 entry.service.toLowerCase().includes(term)
             );
         });
+        console.log('filtered entries',filteredEntries)
+        if (selectedFilter) {
+            setEntries(filteredEntries.filter(entry => entry.geography.toLowerCase() === selectedFilter.toLowerCase()));
+        } else {
+            setEntries(filteredEntries);
+        }
         // setEntries(entry)
-        setEntries(filteredEntries);
+        // setEntries(filteredEntries);
 
-    }, [searchQuery]);
+    }, [searchQuery,selectedFilter]);
 
     const totalItems = entries.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -168,6 +189,13 @@ const OrderStatus = () => {
                     value={searchQuery}
                     onChange={handleSearchChange}
                 />
+            <div className='filter-dropdown'>
+                <select value={selectedFilter} onChange={handleFilterChange}>
+                    {filterOptions.map(option => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                </select>
+            </div>
             {/* </div> */}
             <div style={{ padding: '2rem' }} ></div>
             <div className='shadow'>
