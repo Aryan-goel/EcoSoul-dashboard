@@ -3,9 +3,14 @@ import { RiShoppingCartFill } from 'react-icons/ri';
 import { MdPassword } from 'react-icons/md'
 import { AiOutlineUser } from 'react-icons/ai'
 import axios from 'axios';
+import logo from '../assets/logo.png';
+import { useNavigate } from 'react-router-dom'; // Import useHistory hook
+
+
 
 
 const Login = () => {
+    
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -21,12 +26,16 @@ const Login = () => {
     };
 
     return (
+        <>
+            <div className="logo">
+                <img src={logo} alt="logo" className='' />
+            </div>
         <form onSubmit={handleSubmit}>
 
        
           <div className='login'>
          
-            <RiShoppingCartFill size={150} color='#FFA500' />
+            <RiShoppingCartFill size={150}  color='#FFA500' />
             <div className='input-wrapper'>
                 <AiOutlineUser size={40} color='#FFA500' />
                 <input
@@ -55,6 +64,8 @@ const Login = () => {
             </button>
         </div>
         </form>
+
+        </>
 
 
 

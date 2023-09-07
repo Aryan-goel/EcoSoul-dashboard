@@ -15,19 +15,52 @@
 }
 
 .shadow {
-  box-shadow: 0 2px 12px rgb(255, 255, 255), 0 2px 12px rgba(255, 255, 255, 0.942);
+  /* box-shadow: 0 2px 12px rgb(255, 255, 255), 0 2px 12px rgba(255, 255, 255, 0.942); */
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
   margin-left: 3rem;
   margin-right: 3rem;
   border-radius: 1rem;
 }
 
-.Header {
+/* .Header {
 
   position: flex;
   align-items: center;
   justify-content: space-around;
 
+} */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  /* Add your desired background color */
+  /* padding: 10px 20px; */
+  padding-bottom: 2rem;
+  /* Add padding as needed */
 }
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 100%;
+  /* Ensure the logo doesn't exceed its container */
+}
+
+.header span {
+  font-size: 1.3rem;
+  text-decoration:underline ;
+  text-decoration-color: var(--third-color);
+  color: var(--third-color);
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+/* Add any additional styles as needed */
 
 .menu:hover {
   cursor: pointer;
@@ -46,7 +79,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10rem;
+  margin-top: 5rem;
   color: var(--fourth-color);
   flex-direction: column;
 
@@ -58,13 +91,13 @@
   height: 2.8rem;
   width: 25rem;
   border-width: 0.1rem;
-  background-color: var(--first-color);
+  /* background-color: var(--first-color); */
   padding-left: 3rem;
   padding-bottom: 0.1rem;
   border: none;
   font-size: 1.2rem;
-  text-decoration: white;
-  color: white;
+  text-decoration: black;
+  color: black;
 
 }
 
@@ -79,21 +112,21 @@
 .email-input:focus {
   outline: none;
   color: var(--fourth-color);
-  text-decoration: white;
+  text-decoration: black;
 }
 
 .email-input:hover {
   border-color: var(--second-color);
   transition: ease-in 0.3s;
-  color: white;
+  color: black;
 }
 
 .input-wrapper {
   height: 3.4rem;
   width: 23rem;
-  background-color: var(--first-color);
+  /* background-color: var(--first-color); */
   display: flex;
-  border: 1px solid var(--second-color);
+  border: 3px solid var(--third-color);
   padding: 0.2rem;
   margin-top: 2rem;
   padding-left: 2rem;
@@ -132,13 +165,13 @@
   font-size: 2rem;
 }
 
-.header {
+/* .header {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
 
-}
+} */
 
 .sidebar-icon {
   position: absolute;
@@ -503,6 +536,12 @@ body {
 
   border-radius: 2rem;
 }
+.header-lable>span{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .button-paginate {
   padding: 8px 16px;
@@ -513,6 +552,7 @@ body {
   cursor: pointer;
   margin-right: 8px;
   transition: background-color 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 
 }
 
@@ -528,6 +568,7 @@ body {
   font-size: 1.3rem;
   text-transform: uppercase;
   font-family: montserrat;
+  cursor: pointer;
 }
 
 .table-entry>td {
@@ -544,5 +585,21 @@ body {
   padding-left: 1rem;
   width: 12rem;
   height: 2rem;
-  border-radius: 2rem;
+  border-radius: 0.3rem;
+}
+.filter-dropdown{
+  float:right;
+  margin-right:3rem;
+  /* padding-top:0.5rem; */
+  height:2rem;
+  width:10rem;
+  /* text-align: center; */
+  background-color: var(--second-color);
+  /* border: 2px solid var(--third-color); */
+  border-radius: 0.3rem;
+}
+
+.filter-dropdown:hover{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 28px, rgba(0, 0, 0, 0.22) 0px 5px 10px;
+  cursor: pointer
 }

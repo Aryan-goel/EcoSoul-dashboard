@@ -15,12 +15,17 @@ const Header = () => {
             <div className="logo">
                 <img src={logo} alt="logo" className='' />
             </div>
-            <div className="sidebar-icon">
+            {/* <div className="sidebar-icon">
 
                 <RiMenu2Line size={43} color={showSideBar===true ? 'black': 'white'} onClick={toggleSideBar} className='close-sidebar' />
             {
                  showSideBar ? <Sidebar/> :null
            }
+            </div> */}
+            <div className='header'>
+           <span>Home</span>
+           <span>Warehouse</span>
+           <span>Retail</span>
             </div>
         </div>
 
